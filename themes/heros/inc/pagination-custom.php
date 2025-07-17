@@ -38,7 +38,7 @@ function the_wp_custom_pagination($args = [], $class = 'pagination') {
         $output .= $link;
     }
 
-    echo '<div class="w-full flex justify-end py-2">';
+    echo '<div class="w-full flex justify-end py-5">';
     echo '<nav class="' . esc_attr($class) . 'flex justify-center" role="navigation">';
     echo '  <h2 class="sr-only">' . esc_html($args['screen_reader_text']) . '</h2>';
     echo '  <div class="join">' . $output . '</div>';

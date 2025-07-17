@@ -120,6 +120,9 @@ $inline_styles_selectors = [
     ".header-archive" => [
         "background-color" => "_themename_header_coulour",
     ],
+    ".header-author" => [
+        "background-color" => "_themename_header_coulour",
+    ],
     "a.btn-link" => [
         "color" => "_themename_text_link_colour",
     ],

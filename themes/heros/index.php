@@ -4,9 +4,7 @@
         <div class="grid lg:grid-cols-3 lg:gap-10 gap-5 md:grid-cols-2 grid-cols-2">
             <?php get_template_part('loop', 'index'); ?>
         </div>
-        <div class="w-full flex justify-end mt-5">
-            <?php the_wp_custom_pagination(); ?>
-        </div>
+        <?php the_wp_custom_pagination(); ?>
     </div>
     <?php if (is_active_sidebar('primary-sidebar')): ?>
         <div class="jp-sidebar lg:col-span-3 md:col-span-12 <?php if (is_search()): echo "col-span-full"; endif; ?>">
