@@ -73,7 +73,7 @@ function the_wp_permalink_custom () {
                 <li><?php single_cat_title(); ?></li>
 
             <?php elseif (is_search()) : ?>
-                <li><?php echo esc_html__('Result for search', '_themename') ?> "<?php the_search_query(); ?>"</li>
+                <li><?php echo esc_html__('Search results for : ', '_themename') ?> "<?php the_search_query(); ?>"</li>
 
             <?php elseif (is_404()) : ?>
                 <li><?php echo esc_html__('Error 404', '_themename') ?></li>

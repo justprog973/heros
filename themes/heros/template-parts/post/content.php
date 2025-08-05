@@ -7,7 +7,7 @@
     <?php endif; ?>
     <div class="mx-2 md:mx-5">
         <h2 class="card-title">
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute() ?>">
+            <a class="card-link" href="<?php the_permalink(); ?>" title="<?php the_title_attribute() ?>">
                         <?php the_title(); ?>
             </a>
         </h2>

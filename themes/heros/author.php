@@ -10,6 +10,7 @@ $author_website = get_the_author_meta('user_url', $author);
         <div class="jp-container !py-0">
             <div class="header-author__container flex justify-center flex-col gap-1 w-full h-[350px]">
                 <div class="header-author__content flex flex-col gap-3">
+                    <?php the_wp_permalink_custom(); ?>
                     <div class="header-author__infos flex flex-row gap-5">
                         <?php echo get_avatar($author, 128);?>
                        <div class="header-author__desc">
@@ -34,12 +35,13 @@ $author_website = get_the_author_meta('user_url', $author);
             </div>
         </div>
     </header>
-    <div class="jp-container gap-10 my-10 grid grid-flow-row lg:grid-cols-12 sm:grid-cols-1 p-4">
+    <div class="jp-container gap-10 my-10 grid grid-flow-row lg:grid-cols-12 sm:grid-cols-1">
         <div class="max-w-7xl w-full mx-auto <?php if (is_active_sidebar('primary-sidebar')): echo "lg:col-span-9 md:col-span-12"; else: echo "col-span-12"; endif; ?>">
-            <div class="grid lg:grid-cols-3 lg:gap-x-10 lg:gap-y-5 gap-x-5 gap-y-10 md:grid-cols-2 grid-cols-2">
+            <div class="grid lg:grid-cols-3 lg:gap-10 gap-5 md:grid-cols-2 grid-cols-2">
                 <?php get_template_part('loop', 'author'); ?>
             </div>
             <?php the_wp_custom_pagination(); ?>
         </div>
+        <?php get_template_part('template-parts/page/sidebar'); ?>
     </div>
 <?php get_footer(); ?>

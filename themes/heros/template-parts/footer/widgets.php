@@ -13,7 +13,7 @@ foreach ($columns as $i => $column){
 <?php if($widgets_active) : ?>
     <div class="bg-slate-50">
         <div class="max-w-7xl w-full mx-auto py-6 px-4">
-            <div class="grid lg:grid-cols-12 grid-flow-col auto-cols-fr gap-10 md:grid-cols-1">
+            <div class="grid lg:grid-cols-12 grid-flow-col auto-cols-fr gap-10 md:grid-cols-1 wp-content">
                 <?php foreach ($columns as $i => $column):?>
                     <div class="<?php echo $addClassCol[$i] ?>">
                         <?php if(is_active_sidebar('footer-sidebar-'.($i + 1))): ?>

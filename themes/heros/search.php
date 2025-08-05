@@ -2,6 +2,7 @@
     <header class="header-search w-full flex bg-gray-200">
         <div class="jp-container !py-0">
             <div class="header-search__container flex justify-center flex-col gap-1 w-full h-[150px]">
+                <?php the_wp_permalink_custom(); ?>
                 <h1 class="hero-title text-slate-800">
                     <?php printf(esc_html__('Search Results for : "%s"', '_themename'), get_search_query()); ?>
                 </h1>

@@ -29,7 +29,16 @@ Avant de commencer, tu dois avoir :
 - Aller dans le dossier wp-content :
   ```bash
   cd wp-content
-  git clone https://github.com/justprog973/heros.git .
+  # 1) Cloner dans le wp-content de wordpresss dans dossier temporaire
+  git clone https://github.com/justprog973/heros.git temp-repo
+  
+  # 2) Copier le theme et le plugin
+  cp -rn temp-repo/plugins/* wp-content/plugins/
+  cp -rn temp-repo/themes/* wp-content/themes/
+  
+  # 3) Nettoyer
+  rm -rf temp-repo
+  
   cd themes/heros
   pnpm i
   pnpm start

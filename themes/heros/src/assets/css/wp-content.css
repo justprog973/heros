@@ -1,0 +1,85 @@
+.wp-content {
+    h1 {
+        @apply text-3xl font-bold text-gray-900 mt-6 mb-4;
+    }
+
+    h2 {
+        @apply text-2xl font-semibold text-gray-900 mt-6 mb-4;
+    }
+
+    h3 {
+        @apply text-xl font-semibold text-gray-800 mt-6 mb-3;
+    }
+
+    h4 {
+        @apply text-lg font-medium text-gray-800 mt-5 mb-2;
+    }
+
+    h5 {
+        @apply text-base font-medium text-gray-800 mt-4 mb-2;
+    }
+
+    h6 {
+        @apply text-base font-semibold text-gray-800 mt-4 mb-1 uppercase tracking-wide;
+    }
+
+    p {
+        @apply mb-4 text-sm leading-relaxed;
+    }
+
+    a {
+        @apply text-primary hover:underline transition-colors duration-150;
+    }
+
+    blockquote {
+        @apply border-l-4 border-primary pl-4 italic  my-4;
+    }
+
+    ul {
+        @apply list-disc pl-6 mb-4;
+    }
+
+    ol {
+        @apply list-decimal pl-6 mb-4;
+    }
+
+    li {
+        @apply mb-1;
+    }
+
+    img {
+        @apply max-w-full h-auto rounded-md;
+    }
+
+    figure {
+        @apply my-6;
+    }
+
+    figcaption {
+        @apply text-sm text-gray-500 text-center mt-2;
+    }
+
+    code {
+        @apply px-1 py-0.5 bg-gray-100 text-pink-600 rounded text-sm font-mono;
+    }
+
+    pre {
+        @apply bg-gray-900 text-white p-4 rounded overflow-x-auto mb-6;
+    }
+
+    hr {
+        @apply border-t my-6 border-gray-300;
+    }
+
+    table {
+        @apply w-full border-collapse text-left my-2;
+    }
+
+    th {
+        @apply font-semibold bg-gray-100 text-gray-800 border-b;
+    }
+
+    td {
+        @apply border-b;
+    }
+}

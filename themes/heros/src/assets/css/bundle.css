@@ -1,26 +1,9 @@
 @import "tailwindcss";
-
-@source "../../../*.php";
+@import "./wp-content.css";
+@source "../../../**/*.php";
 
 @plugin "daisyui";
 @custom-variant dark (&:where(.dark, .dark *));
-
-body,html {
-    scroll-behavior: smooth;
-}
-
-.jp-layout  {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-.jp-layout .admin_bar_is_show{
-    height: calc(100vh - 32px);
-}
-.jp-layout  > main{
-    flex-grow: 1;
-}
 
 @utility input {
     @apply focus-within:outline-none focus-within:ring-offset-0 bg-gray-50;
@@ -37,12 +20,26 @@ body,html {
     @apply focus-within:ring-4 focus-within:ring-primary/30 focus-within:border-primary;
 }
 
+.jp-layout {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.jp-layout.admin_bar_is_show {
+    height: calc( 100vh - 32px);
+}
+
+.jp-layout main {
+    flex: 1;
+}
+
 
 @utility card {
     @apply rounded-sm;
 }
 
-.breadcrumbs ul li{
+.breadcrumbs ul li {
     @apply text-white;
 }
 
@@ -52,6 +49,15 @@ body,html {
 
 .breadcrumbs ul li:last-child {
     @apply text-gray-400;
+}
+
+.header-search__container .breadcrumbs ul li,
+.header-search__container .breadcrumbs ul li:before {
+    @apply text-gray-800 border-gray-900;
+}
+
+.header-search__container .breadcrumbs ul li:last-child {
+    @apply text-gray-500;
 }
 
 #menu-menu li.current-menu-item.current_page_item {
@@ -66,15 +72,15 @@ body,html {
     @apply text-primary transition-colors duration-200 hover:underline font-bold;
 }
 
-.card-cats a {
+.badge-cats a {
     @apply bg-primary/85 hover:bg-primary rounded-sm py-[2px] px-[10px] text-white duration-300 transition-colors;
 }
 
-.card-tags ul {
+.badge-tags ul {
     @apply flex flex-row gap-1 text-sm mt-2;
 }
 
-.card-tags ul li a {
+.badge-tags ul li a {
     @apply bg-gray-400/85 hover:bg-gray-400 rounded-sm py-[2px] px-[10px] text-white duration-300 transition-colors;
 }
 

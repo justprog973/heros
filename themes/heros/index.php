@@ -6,11 +6,7 @@
         </div>
         <?php the_wp_custom_pagination(); ?>
     </div>
-    <?php if (is_active_sidebar('primary-sidebar')): ?>
-        <div class="jp-sidebar lg:col-span-3 md:col-span-12 <?php if (is_search()): echo "col-span-full"; endif; ?>">
-            <?php dynamic_sidebar('primary-sidebar'); ?>
-        </div>
-    <?php endif; ?>
+    <?php get_template_part('template-parts/page/sidebar'); ?>
 </div>
 <?php get_footer(); ?>
 
