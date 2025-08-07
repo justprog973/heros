@@ -510,7 +510,7 @@ class Walker_Custom_Desktop extends Walker_Nav_Menu {
         $title = apply_filters( 'nav_menu_item_title', $title, $menu_item, $args, $depth );
 
         $item_output  = $args->before;
-        $item_output .= '<'._themename_add_tag_on_submenu($menu_item, $depth, "a") . _themename_has_menu_item_add_el($menu_item, $depth, $attributes, false) . '>';
+        $item_output .= '<'._themename_add_tag_on_submenu($menu_item, $depth, "a", 'cursor-pointer') . _themename_has_menu_item_add_el($menu_item, $depth, $attributes, false) . '>';
         $item_output .= $args->link_before . $title . _themename_has_menu_item_add_icon($menu_item, $depth). $args->link_after;
         $item_output .= '</'. _themename_add_tag_on_submenu($menu_item, $depth, "a") .'>';
         $item_output .= $args->after;

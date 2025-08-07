@@ -139,12 +139,11 @@
 
     .menu-item-has-children > .sub-menu {
         left: 0;
-        bottom: -105px;
         right: 0;
     }
 
     .menu-item-has-children > .sub-menu ul {
-        bottom: 0;
+        top: 40px;
         left: -200px;
     }
 
