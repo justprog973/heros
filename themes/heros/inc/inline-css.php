@@ -128,6 +128,18 @@ $inline_styles_selectors = [
     ],
     "a.btn-link:hover" => [
         "color" => "_themename_text_link_colour",
+    ],
+    ".jp-menu-desktop .jp-nav-menu__content li.current-menu-item a" => [
+        "color" => "_themename_accent_colour",
+    ],
+    ".jp-menu-desktop .jp-nav-menu__content li a:hover" => [
+        "color" => "_themename_accent_colour",
+    ],
+    "#footer a" => [
+        "color" => "_themename_text_link_colour",
+    ],
+    "#footer a:hover" => [
+        "color" => "_themename_text_link_colour",
     ]
 ];
 
@@ -136,18 +148,17 @@ $inline_styles = "";
 foreach ($inline_styles_selectors as $selector => $props) {
     $inline_styles .= "$selector {";
     foreach ($props as $prop => $value) {
-        if($selector) {
+        /**if($selector) {
             $inline_styles .= "$prop: "._themename_get_accent_color($value, "#c3c3c3").";";
-        }
-        if($selector == "a.card-link:hover" || $selector == "a.btn-link:hover" || $selector == ".logged-in-as a:hover") {
-            $inline_styles .= "$prop: ". darken_color(_themename_get_accent_color($value), 30).";";
-            break;
-        }
+        }**/
 
         if($prop == '--tw-ring-color') {
             $inline_styles .= "$prop: ". _themename_get_accent_color($value)."4D;";
             break;
-        }else {
+        }else if(strpos($selector, ':hover')) {
+            $inline_styles .= "$prop: ". darken_color(_themename_get_accent_color($value), 30).";";
+            break;
+        } else {
             $inline_styles .= "$prop: "._themename_get_accent_color($value).";";
         }
 

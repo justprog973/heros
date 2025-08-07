@@ -16,7 +16,7 @@
                 </div>
             </div>
         </header>
-    <div class="jp-article__content py-10">
+    <div class="jp-article__content py-5">
         <div class="jp-container text-base">
             <div class="mb-5 wp-content gap-10 grid grid-flow-row lg:grid-cols-12 sm:grid-cols-1">
                 <div class="max-w-7xl w-full mx-auto wp-content <?php if (is_active_sidebar('primary-sidebar')): echo "lg:col-span-9 md:col-span-12"; else: echo "col-span-12"; endif; ?>">

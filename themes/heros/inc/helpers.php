@@ -73,3 +73,13 @@ function _themename_get_capitalize_on_link ($link) {
         $link
     );
 }
+
+function _themename_get_custom_logo ($class = '', $class_link = '') {
+    $custom_logo_id = get_theme_mod('custom_logo');
+    echo '<a href="' . esc_url(home_url('/')) . '" class="custom-logo-link '. $class_link . '">';
+    echo wp_get_attachment_image($custom_logo_id, 'full', false, [
+        'class' => $class,
+        'alt' => get_bloginfo('name'),
+    ]);
+    echo '</a>';
+}

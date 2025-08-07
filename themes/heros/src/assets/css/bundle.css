@@ -1,9 +1,16 @@
 @import "tailwindcss";
 @import "./wp-content.css";
+@import "./menu.css";
 @source "../../../**/*.php";
 
 @plugin "daisyui";
 @custom-variant dark (&:where(.dark, .dark *));
+
+@layer utilities {
+    .ease-slide {
+        transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+}
 
 @utility input {
     @apply focus-within:outline-none focus-within:ring-offset-0 bg-gray-50;
@@ -20,6 +27,18 @@
     @apply focus-within:ring-4 focus-within:ring-primary/30 focus-within:border-primary;
 }
 
+body {
+    font-family: Poppins, Montserrat, Sans-serif;
+}
+
+a {
+    transition: color .2s ease-in;
+}
+
+.jp-menu-mobile > div.jp-mobile-menu__content {
+   margin-top: 46px;
+}
+
 .jp-layout {
     height: 100vh;
     display: flex;
@@ -28,6 +47,12 @@
 
 .jp-layout.admin_bar_is_show {
     height: calc( 100vh - 32px);
+}
+
+@media screen and (max-width: 782px) {
+    .jp-layout.admin_bar_is_show {
+        height: calc( 100vh - 46px);
+    }
 }
 
 .jp-layout main {

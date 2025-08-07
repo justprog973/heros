@@ -142,7 +142,15 @@ export const scripts = () => {
                             use: {
                                 loader: "babel-loader",
                                 options: {
-                                    presets: ["@babel/preset-env"]
+                                    presets: [
+                                        ['@babel/preset-env', {
+                                            targets: {
+                                                node: '8'
+                                            },
+                                            useBuiltIns: false,
+                                            modules: false
+                                        }]
+                                    ]
                                 }
                             }
                         }
