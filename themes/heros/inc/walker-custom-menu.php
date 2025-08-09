@@ -1,7 +1,16 @@
 <?php
 
 
-class Walker_Custom_Mobile extends Walker_Nav_Menu {
+class Walker_Custom extends Walker_Nav_Menu {
+
+    private string $type;
+
+
+    public function __construct($type = 'mobile')
+    {
+        $this->type = $type;
+        parent::__construct();
+    }
 
     /**
      * What the class handles.
@@ -55,7 +64,12 @@ class Walker_Custom_Mobile extends Walker_Nav_Menu {
         $class_names = implode( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
         $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-        $output .= "{$n}{$indent}<ul$class_names>{$n}";
+        $attrs_ul = "";
+        if($this->type !== 'mobile') {
+            $attrs_ul = " x-show='open' x-transition ";
+        }
+
+        $output .= "{$n}{$indent}<ul$class_names". $attrs_ul .">{$n}";
     }
 
     /**
@@ -158,6 +172,10 @@ class Walker_Custom_Mobile extends Walker_Nav_Menu {
             $atr_data = 'x-data="{ open: false }"';
         }
 
+        if(in_array('menu-item-has-children', $menu_item->classes) && $this->type !== 'mobile') {
+            $atr_data .= '@mouseenter="open = true" @mouseleave="open = false" ';
+        }
+
         $output .= $indent . '<li '. $atr_data . $id . $class_names . '>';
 
         $atts           = array();
@@ -226,21 +244,36 @@ class Walker_Custom_Mobile extends Walker_Nav_Menu {
         $title = apply_filters( 'nav_menu_item_title', $title, $menu_item, $args, $depth );
 
         $item_output  = $args->before;
-        if(in_array('menu-item-has-children', $menu_item->classes)) {
-            $item_output.= "<span @click='open = ! open' class='dropdown-menu-title'>".$title._themename_has_menu_item_add_icon($menu_item, $depth)."</span>";
+
+        $icon = null;
+
+        if($this->type === 'mobile') {
+            if(in_array('menu-item-has-children', $menu_item->classes)) {
+                $item_output.= "<span @click='open = ! open' class='dropdown-menu-title'>".$title._themename_has_menu_item_add_icon($menu_item, $depth)."</span>";
+            }
+            if(in_array('menu-item-has-children', $menu_item->classes)) {
+                $item_output.= "<div x-show='open' class='dropdown-menu-content' x-transition:enter='transition ease-slide duration-150'
+                x-transition:enter-start='translate-x-100'
+                x-transition:enter-end='translate-x-0'
+                x-transition:leave='transition ease-slide duration-300'
+                x-transition:leave-start='translate-x-0'
+                x-transition:leave-end='translate-x-200'>";
+            }
+            $icon = '<span onclick="event.stopPropagation(); event.preventDefault();" @click="open = ! open" class="dropdown-menu-back-icon">'.  _themename_has_menu_item_add_icon($menu_item, $depth) .'</span>';
+        }else {
+            $icon = _themename_has_menu_item_add_icon($menu_item, $depth);
         }
-        if(in_array('menu-item-has-children', $menu_item->classes)) {
-            $item_output.= "<div x-show='open' class='dropdown-menu-content' x-transition:enter='transition ease-slide duration-150'
-        x-transition:enter-start='translate-x-100'
-        x-transition:enter-end='translate-x-0'
-        x-transition:leave='transition ease-slide duration-300'
-        x-transition:leave-start='translate-x-0'
-        x-transition:leave-end='translate-x-200'>";
-        }
+
         $item_output .= '<'._themename_add_tag_on_submenu($menu_item, $depth, "a class='flex items-center gap-1 justify-center w-full'"). _themename_has_menu_item_add_el($menu_item, $depth, $attributes, false) . '>';
-        $item_output .= $args->link_before . $title .'<span onclick="event.stopPropagation(); event.preventDefault();" @click="open = ! open" class="dropdown-menu-back-icon">'.  _themename_has_menu_item_add_icon($menu_item, $depth) .'</span>'. $args->link_after;
+        $item_output .= $args->link_before . $title . $icon . $args->link_after;
         $item_output .= '</'. _themename_add_tag_on_submenu($menu_item, $depth, "a") .'>';
         $item_output .= $args->after;
+
+        /*$item_output  = $args->before;
+        $item_output .= '<'._themename_add_tag_on_submenu($menu_item, $depth, "a", 'cursor-pointer') . _themename_has_menu_item_add_el($menu_item, $depth, $attributes, false) . '>';
+        $item_output .= $args->link_before . $title . _themename_has_menu_item_add_icon($menu_item, $depth). $args->link_after;
+        $item_output .= '</'. _themename_add_tag_on_submenu($menu_item, $depth, "a") .'>';
+        $item_output .= $args->after;*/
 
         /**
          * Filters a menu item's starting output.
@@ -280,10 +313,18 @@ class Walker_Custom_Mobile extends Walker_Nav_Menu {
             $t = "\t";
             $n = "\n";
         }
-        $output .= _themename_has_menu_item_add_el($data_object ,$depth,'</div>')."</li>{$n}";
+
+        $tag = '';
+        if($this->type === 'mobile') {
+            $tag = _themename_has_menu_item_add_el($data_object ,$depth,'</div>');
+        }
+
+        $output .= $tag."</li>{$n}";
     }
 
 }
+
+
 
 class Walker_Custom_Desktop extends Walker_Nav_Menu {
 

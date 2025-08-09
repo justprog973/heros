@@ -31,7 +31,7 @@
                                    'theme_location' => 'primary-menu',
                                    'container' =>  false,
                                    'menu_class' => 'jp-nav-menu__content max-h-[80px] h-[80px] flex flex-row lg:gap-10 gap-5 justify-center items',
-                                   'walker' => new Walker_Custom_Desktop()
+                                   'walker' => new Walker_Custom('desktop')
                                ]); ?>
                            </div>
                         </nav>
@@ -62,7 +62,7 @@
                                                 'theme_location' => 'primary-menu',
                                                 'container' =>  false,
                                                 'menu_class' => 'jp-nav-menu-wrapper__content  relative flex flex-col justify-center items-center',
-                                                'walker' => new Walker_Custom_Mobile()
+                                                'walker' => new Walker_Custom()
                                             ]); ?>
                                         </nav>
                                     </div>
