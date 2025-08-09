@@ -7,7 +7,7 @@
                         echo esc_html__('Archive', '_themename') . ' - ' . get_the_archive_title();
                     ?>
                 </h1>
-                <?php the_archive_description('<div class="font-medium text-gray-400">','</div>'); ?>
+                <?php the_archive_description('<div class="font-medium text-sm md:text-base text-gray-400">','</div>'); ?>
             </div>
         </div>
     </header>
