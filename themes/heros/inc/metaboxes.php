@@ -16,8 +16,8 @@ add_action('add_meta_boxes', '_themename_add_meta_box');
 
 function _themename_post_metabox_html($post)
 {
-    $subtitle = get_post_meta($post->ID, '_themename_post_subtitle', true);
-    $layout = get_post_meta($post->ID, '_themename_post_layout', true);
+    $subtitle = get_post_meta($post->ID, '__themename_post_subtitle', true);
+    $layout = get_post_meta($post->ID, '__themename_post_layout', true);
     wp_nonce_field('_themename_update_post_metabox', '_themename_update_post_nonce');
     ?>
     <p>
@@ -53,13 +53,13 @@ function _themename_save_post_metabox($post_id, $post)
     if (array_key_exists('_themename_post_subtitle_field', $_POST)) {
         update_post_meta(
             $post_id,
-            '_themename_post_subtitle',
+            '__themename_post_subtitle',
             sanitize_text_field($_POST['_themename_post_subtitle_field']));
     }
     if (array_key_exists('_themename_post_layout_field', $_POST)) {
         update_post_meta(
             $post_id,
-            '_themename_post_layout',
+            '__themename_post_layout',
             sanitize_text_field($_POST['_themename_post_layout_field']));
     }
 }

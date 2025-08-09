@@ -8,16 +8,16 @@ $author_website = get_the_author_meta('user_url', $author);
 ?>
     <header class="header-author w-full flex bg-gray-600">
         <div class="jp-container !py-0">
-            <div class="header-author__container flex justify-center flex-col gap-1 w-full h-[350px]">
+            <div class="header-author__container flex justify-center flex-col gap-1 w-full h-auto py-5">
                 <div class="header-author__content flex flex-col gap-3">
                     <?php the_wp_permalink_custom(); ?>
                     <div class="header-author__infos flex flex-row gap-5">
                         <?php echo get_avatar($author, 128);?>
                        <div class="header-author__desc">
-                           <h1 class="hero-title text-white">
+                           <h1 class="font-bold text-3xl md:text-5xl text-white">
                                <?php echo esc_html($author_display); ?>
                            </h1>
-                           <div class="font-medium text-gray-400">
+                           <div class="font-medium text-gray-400 text-sm md:text-base">
                                <?php printf(esc_html(_n('%s post', '%s posts', $author_posts, '_themename')),
                                    number_format_i18n($author_posts)); ?>
                            </div>
@@ -28,7 +28,7 @@ $author_website = get_the_author_meta('user_url', $author);
                            <?php endif; ?>
                        </div>
                     </div>
-                    <p class="font-medium  text-gray-300"><?php
+                    <p class="font-medium  text-gray-300 text-sm md:text-base"><?php
                         echo esc_html($author_description);
                         ?></p>
                 </div>

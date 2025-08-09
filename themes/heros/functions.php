@@ -8,7 +8,7 @@ require_once 'inc/theme-support.php';
 require_once 'inc/navigation.php';
 require_once 'inc/include-plugins.php';
 require_once 'inc/comment-callback.php';
-//require_once 'inc/metaboxes.php';
+require_once 'inc/metaboxes.php';
 require_once 'inc/hooks.php';
 
 
